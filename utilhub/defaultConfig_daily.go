@@ -1,9 +1,12 @@
 package utilhub
 
+import "sync"
+
 var (
 	// 🧪 Create a config instance for B plus tree unit testing and parse default values.
 	_unitTestConfig = BptreeUnitTestConfig{}
 	_configParseErr = ParseDefault(&_unitTestConfig)
+	_ones           sync.Once // Prevent configuration from being overwritten.
 )
 
 // 🧪 Initialize default test parameters.
