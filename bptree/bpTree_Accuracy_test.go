@@ -19,7 +19,6 @@ package bpTree
 import (
 	"math/rand"
 	"testing"
-	"time"
 
 	"github.com/panhongrainbow/go-algorithm/utilhub"
 	"github.com/stretchr/testify/require"
@@ -33,8 +32,20 @@ var (
 	ProjectDir = utilhub.FileNode{}.Goto(unitTestConfig.Record.TestRecordPath)
 
 	// 🧪 Create a subdirectory named with the current date under the project.
-	recordDir = ProjectDir.MkDir(time.Now().Format("2006-01-02"))
+	recordDir = ProjectDir.MkDir(_TestTimeString("2006-01-02", "Asia/Shanghai"))
 )
+
+// _TestTimeString gets the current time as a formatted string in the given time zone.
+func _TestTimeString(format string, timeZone string) string {
+	// Call the function GetNowTimeString from the utilhub package to get the current time in string format.
+	str, err := utilhub.GetNowTimeString(format, timeZone)
+	if err != nil {
+		// If an error occurs, panic and terminate the program.
+		panic(err)
+	}
+	// Return the formatted time string.
+	return str
+}
 
 // Test_Check_BpTree_Accuracy 🧫 checks if the tree resets after bulk insert/delete, ensuring indexing correctness.
 func Test_Check_BpTree_Accuracies(t *testing.T) {

@@ -105,7 +105,7 @@ func NewProgressBar(name string, total uint32, barLength int, opts ...BarOption)
 		lastFilledLength: 0, // Track the length of the last update to reduce redundant updates.
 
 		// Timezone configuration
-		timezone: "UTC", // Default timezone is set to UTC.
+		timezone: "Asia/Shanghai", // Default timezone is set to Asia/Shanghai. (上海时间)
 		// location: will be updated (1) (loaded based on the timezone)
 
 		// Timing information
