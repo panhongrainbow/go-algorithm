@@ -31,23 +31,37 @@ func Test_Check_Manual_Accuracies(t *testing.T) {
 			require.NoError(t, err)
 		}
 
-		// fmt.Println(recordFile.Path(), err)
+		// The following tests cover different aspects of B Plus tree correctness and stability:
+		switch {
+		case strings.Contains(each.Record.ManualRecordFile, "BulkInsertDelete"):
+			// Basic test: bulk insert a large amount of data into the B Plus tree,
+			// then delete a large amount of data.
 
-		// Basic test.
-		if strings.Contains(each.Record.ManualRecordFile, "BulkInsertDelete") {
+			// Verify test data for BulkInsertDelete.
 			verifyBulkInsertDelete(t, recordDir, each)
-		}
 
-		// Boundary test.
-		if strings.Contains(each.Record.ManualRecordFile, "RandomizedBoundary") {
+			// Execute accuracy test for BulkInsertDelete.
+			runBulkInsertDelete(t, recordDir, each)
+
+		case strings.Contains(each.Record.ManualRecordFile, "RandomizedBoundary"):
+			// Boundary test: test cases where data keys may collide with index keys.
+
+			// Verify test data for RandomizedBoundary.
 			verifyRandomizedBoundary(t, recordDir, each)
-		}
 
-		// Endurance test.
-		if strings.Contains(each.Record.ManualRecordFile, "SingleNodeEndurance") {
+			// Execute accuracy test for RandomizedBoundary.
+			runRandomizedBoundary(t, recordDir, each)
+
+		case strings.Contains(each.Record.ManualRecordFile, "SingleNodeEndurance"):
+			// Endurance test: repeatedly delete the same sequence of data in a randomized order,
+			// verifying that the B Plus tree does not encounter node failures or become corrupted.
+
+			// Verify test data for SingleNodeEndurance.
 			verifySingleNodeEndurance(t, recordDir, each)
-		}
 
+			// Execute accuracy test for SingleNodeEndurance.
+			runSingleNodeEndurance(t, recordDir, each)
+		}
 	}
 
 	return
