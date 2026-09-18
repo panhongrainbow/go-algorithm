@@ -10,8 +10,7 @@ type ManualConfig any
 
 // ManualConfigType ⛏️ is a struct for manual test configuration.
 type ManualConfigType struct {
-	Mechanism string   `json:"mechanism" default:"auto"` // 🧪 When the mechanism selection is set to `auto`, all tests will be conducted.
-	Record    struct { // 🧪 Record contains configurations related to test record storage.
+	Record struct { // 🧪 Record contains configurations related to test record storage.
 		TestRecordPath   string `json:"testRecordPath" default:"/temp/test_record"` // 🧪 TestRecordPath specifies the directory path where test records will be saved.
 		ManualRecordDate string `json:"manualRecordDate" default:"0000-00-00"`      // 🧪 Manual testing requires specifying the previous test date.
 		ManualRecordFile string `json:"manualRecordFile" default:"empty"`           // 🧪 Manual testing requires specifying the previous test record file.
