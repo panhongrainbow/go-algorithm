@@ -21,7 +21,7 @@ import (
 // =====================================================================================================================
 
 // prepareSingleNodeEndurance 🧫 prepares test data for SingleNodeEndurance.
-func prepareMode3(t *testing.T, recordDir utilhub.FileNode) {
+func prepareSingleNodeEndurance(t *testing.T, recordDir utilhub.FileNode) {
 
 	// === Init test model and record file ===
 

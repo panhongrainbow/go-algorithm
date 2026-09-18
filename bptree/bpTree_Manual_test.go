@@ -15,8 +15,6 @@ func Test_Check_Manual_Accuracies(t *testing.T) {
 		manualTestConfig = utilhub.GetManualConfig()
 	)
 
-	// fmt.Println(manualTestConfig)
-
 	for _, each := range manualTestConfig {
 		var (
 			// 🧪 Navigate to the project dataSet directory for test record storage.

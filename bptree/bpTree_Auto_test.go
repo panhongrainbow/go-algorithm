@@ -46,58 +46,39 @@ func Test_Check_BpTree_Accuracies(t *testing.T) {
 	})
 
 	t.Run("Bulk InsertDelete", func(t *testing.T) {
+		// Prepare test data for BulkInsertDelete.
+		prepareBulkInsertDelete(t, recordDir, autoTestConfig)
 
-		// Test data will only be generated during automated testing.
-		if autoTestConfig.Mechanism == "auto" {
-			// Prepare test data for BulkInsertDelete.
-			prepareBulkInsertDelete(t, recordDir, autoTestConfig)
-		}
+		// Verify test data for BulkInsertDelete.
+		verifyBulkInsertDelete(t, recordDir, autoTestConfig)
 
-		// Only during automated testing or this test mode will the following tests be performed continuously.
-		if autoTestConfig.Mechanism == "auto" {
-
-			// Verify test data for BulkInsertDelete.
-			verifyBulkInsertDelete(t, recordDir, autoTestConfig)
-
-			// Execute accuracy test for BulkInsertDelete.
-			runBulkInsertDelete(t, recordDir, autoTestConfig)
-		}
+		// Execute accuracy test for BulkInsertDelete.
+		runBulkInsertDelete(t, recordDir, autoTestConfig)
 	})
 
 	t.Run("Randomized Boundary Test", func(t *testing.T) {
 
-		// Test data will only be generated during automated testing.
-		if autoTestConfig.Mechanism == "auto" {
-			// Prepare test data for RandomizedBoundary.
-			prepareRandomizedBoundary(t, recordDir)
-		}
+		// Prepare test data for RandomizedBoundary.
+		prepareRandomizedBoundary(t, recordDir)
 
-		// Only during automated testing or this test mode will the following tests be performed continuously.
-		if autoTestConfig.Mechanism == "auto" {
-			// Verify test data for RandomizedBoundary.
-			verifyRandomizedBoundary(t, recordDir, autoTestConfig)
+		// Verify test data for RandomizedBoundary.
+		verifyRandomizedBoundary(t, recordDir, autoTestConfig)
 
-			// Execute accuracy test for RandomizedBoundary.
-			runRandomizedBoundary(t, recordDir, autoTestConfig)
-		}
+		// Execute accuracy test for RandomizedBoundary.
+		runRandomizedBoundary(t, recordDir, autoTestConfig)
+
 	})
 
 	t.Run("Single Node Endurance Test", func(t *testing.T) {
 
-		// Test data will only be generated during automated testing.
-		if autoTestConfig.Mechanism == "auto" {
-			// Prepare test data for SingleNodeEndurance.
-			prepareMode3(t, recordDir)
-		}
+		// Prepare test data for SingleNodeEndurance.
+		prepareSingleNodeEndurance(t, recordDir)
 
-		// Only during automated testing or this test mode will the following tests be performed continuously.
-		if autoTestConfig.Mechanism == "auto" {
-			// Verify test data for SingleNodeEndurance.
-			verifySingleNodeEndurance(t, recordDir, autoTestConfig)
+		// Verify test data for SingleNodeEndurance.
+		verifySingleNodeEndurance(t, recordDir, autoTestConfig)
 
-			// Execute accuracy test for SingleNodeEndurance.
-			runSingleNodeEndurance(t, recordDir, autoTestConfig)
-		}
+		// Execute accuracy test for SingleNodeEndurance.
+		runSingleNodeEndurance(t, recordDir, autoTestConfig)
 
 	})
 }

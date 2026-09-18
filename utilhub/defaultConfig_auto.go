@@ -96,7 +96,6 @@ func ParseAuto(autoConfig *TestProcessConfigType) (err error) {
 		cfgFile.(*AutoConfigType).Parameters.BpWidth = []int{3, 10, 13, 14, 17} // 指定分叉因子
 
 		// Copy all Parameters from cfgFile to autoConfig.
-		autoConfig.Mechanism = cfgFile.(*AutoConfigType).Mechanism
 		autoConfig.Record = cfgFile.(*AutoConfigType).Record
 		autoConfig.Parameters = cfgFile.(*AutoConfigType).Parameters
 		autoConfig.PoolStage = cfgFile.(*AutoConfigType).PoolStage
