@@ -67,8 +67,6 @@ type BpTreeProcess struct {
 	RandomTotalCount int64
 }
 
-// Bulk InsertDelete
-
 // PlanMaxInsertDelete 🧮 generates a plan for sudden bulk insertion followed by bulk deletion of data in the B Plus tree.
 func (bPlan BpTreeProcess) PlanMaxInsertDelete() []EachBpTestStage {
 	return []EachBpTestStage{
