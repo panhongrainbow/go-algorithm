@@ -38,7 +38,18 @@ test-all:
 all: clean test-all
 
 # Run tests in the ./utilhub directory with verbose output and no timeout.
-.PHONY: test-utilhub
+.PHONY: test-utilhub auto-test manual-test
+
+# Run daily automated tests.
+auto-test:
+	@go clean -cache
+	go test -v ./bptree -timeout=0 -run Test_Check_BpTree_Accuracies
+
+# Run manual tests.
+manual-test:
+	@go clean -cache
+	go test -v ./bptree -timeout=0 -run Test_Check_Manual_Accuracies
+
 test-utilhub:
 	# (1) Verifying Bash ANSI color output rendering in terminal. (色彩)
 	@go test -v ./utilhub -timeout=0 -run Test_AnsiColorOutput

@@ -30,11 +30,13 @@ func Test_Check_Manual_Accuracies(t *testing.T) {
 			require.NoError(t, err)
 		}
 
+		each.ExtractionFailureCases()
+
 		// The following tests cover different aspects of B Plus tree correctness and stability:
 		switch {
 
 		// Bulk insert/delete performs a sudden bulk insertion followed by bulk deletion of data in the B Plus Tree.「简单的大量资料新增和」
-		case strings.Contains(each.Record.ManualRecordFile, "Bulk Insert/Delete"):
+		case strings.Contains(each.Record.ManualRecordFile, "BulkInsertDelete.do_not_open"):
 
 			// Verify test data for BulkInsertDelete.
 			verifyBulkInsertDelete(t, recordDir, each)
@@ -44,7 +46,7 @@ func Test_Check_Manual_Accuracies(t *testing.T) {
 
 		// RandomizedBoundary performs repeated insertion and deletion of data at the boundaries of the B Plus Tree,
 		// including randomized cases where newly inserted keys collide with existing index keys.「新增资料的键值与既有索引发生冲突」
-		case strings.Contains(each.Record.ManualRecordFile, "Randomized Boundary Test"):
+		case strings.Contains(each.Record.ManualRecordFile, "RandomizedBoundary.do_not_open"):
 
 			// Verify test data for RandomizedBoundary.
 			verifyRandomizedBoundary(t, recordDir, each)
@@ -54,7 +56,7 @@ func Test_Check_Manual_Accuracies(t *testing.T) {
 
 		// RandomizedBoundary performs repeated insertion and deletion of data at the boundaries of the B Plus Tree,
 		// including randomized cases where newly inserted keys collide with existing index keys.「新增资料的键值与既有索引发生冲突」
-		case strings.Contains(each.Record.ManualRecordFile, "Single Node Endurance Test"):
+		case strings.Contains(each.Record.ManualRecordFile, "SingleNodeEndurance.do_not_open"):
 
 			// Verify test data for SingleNodeEndurance.
 			verifySingleNodeEndurance(t, recordDir, each)

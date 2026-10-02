@@ -23,8 +23,10 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-// Test_Check_BpTree_Accuracy 🧫 verifies B Plus Tree indexing correctness through (1)bulk insert/delete,
-// (2)randomized boundary testing, and (3)single-node endurance testing.
+// Test_Check_BpTree_Accuracy 🧫 verifies B Plus Tree indexing correctness through
+// - (1)bulk insert/delete,
+// - (2)randomized boundary testing, and
+// - (3)single-node endurance testing.
 func Test_Check_BpTree_Accuracies(t *testing.T) {
 	// This is a set of path configurations shared by the automated testing.
 	var (
