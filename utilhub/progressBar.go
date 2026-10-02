@@ -390,3 +390,7 @@ func (pb *ProgressBar) Report(valueWidth int) error {
 
 	return nil
 }
+
+func (each TestProcessConfigType) ExtractionFailureCases() {
+	fmt.Println(each)
+}
