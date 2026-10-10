@@ -391,6 +391,21 @@ func (pb *ProgressBar) Report(valueWidth int) error {
 	return nil
 }
 
-func (each TestProcessConfigType) ExtractionFailureCases() {
-	fmt.Println(each)
+// PrintFailScenarioInfo prints information about a recorded failure scenario
+// to provide context for the error being tested.
+// Failure scenarios focus on reproducibility, while performance testing
+// is handled by automated tests that generate their own test data,
+// allowing them to better reflect real-world conditions.
+// (错误重现时不会记录时间)
+func PrintFailScenarioInfo(each TestProcessConfigType) {
+	// Test File
+	fmt.Println(each.Record.ManualRecordFile)
+	// Test Date
+	fmt.Println(each.Record.ManualRecordDate)
+	// Test File Path
+	fmt.Println(each.Record.TestRecordPath)
+	// Test Data Size
+	fmt.Println(each.Parameters.RandomTotalCount)
+	// B Plus Tree Width
+	fmt.Println(each.Parameters.BpWidth[0])
 }
