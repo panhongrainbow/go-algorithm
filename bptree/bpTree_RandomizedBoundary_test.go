@@ -144,7 +144,7 @@ Loop:
 	<-progressBar.WaitForPrinterStop()
 
 	// Print a final report.
-	err := progressBar.Report(len(testRandomizedBoundaryName + "; Width: XX"))
+	err := utilhub.AutoFinalReport(progressBar, len(testRandomizedBoundaryName+"; Width: XX"))
 	assert.NoError(t, err)
 
 	// Print the B Plus tree structure.

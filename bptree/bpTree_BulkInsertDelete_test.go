@@ -152,7 +152,7 @@ Loop:
 	<-progressBar.WaitForPrinterStop()
 
 	// Print a final report.
-	err := progressBar.Report(len(testBulkInsertDeleteName + "; Width: XX"))
+	err := utilhub.AutoFinalReport(progressBar, len(testBulkInsertDeleteName+"; Width: XX"))
 	assert.NoError(t, err)
 
 	// Print the B Plus tree structure.

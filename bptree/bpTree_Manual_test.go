@@ -31,7 +31,7 @@ func Test_Check_Manual_Accuracies(t *testing.T) {
 		}
 
 		// Print the recorded failure scenario before reproducing the error.
-		utilhub.PrintFailScenarioInfo(each)
+		utilhub.FailScenarioPreview(each, 1)
 
 		// The following tests cover different aspects of B Plus tree correctness and stability:
 		switch {

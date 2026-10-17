@@ -143,7 +143,7 @@ Loop:
 	<-progressBar.WaitForPrinterStop()
 
 	// Print a final report.
-	err := progressBar.Report(len(testSingleNodeEnduranceName + "; Width: XX"))
+	err := utilhub.AutoFinalReport(progressBar, len(testSingleNodeEnduranceName+"; Width: XX"))
 	assert.NoError(t, err)
 
 	// Print the B Plus tree structure.
