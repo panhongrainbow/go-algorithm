@@ -24,6 +24,7 @@ func AutoFinalReport(pb *ProgressBar, rowWidth int) error {
 		rowWidth = 32 // The valueWidth should be at least 30 because the date and time are included.
 	}
 	totalWidth := fieldWidth + rowWidth + 7
+
 	// Create a border for the table using a repeated pattern for visual clarity.
 	border := BrightYellow + strings.Repeat("=", totalWidth) + Reset
 	divider := BrightYellow + strings.Repeat("-", totalWidth) + Reset
@@ -63,7 +64,7 @@ func AutoFinalReport(pb *ProgressBar, rowWidth int) error {
 // rowWidth: The width of the value column in the table. It is based on the longest value length of each row.
 func FailScenarioPreview(each TestProcessConfigType, rowWidth int) {
 	// Test File
-	fmt.Println(each.Record.ManualRecordFile)
+	// fmt.Println(each.Record.ManualRecordFile)
 	// Test Date
 	// fmt.Println(each.Record.ManualRecordDate)
 	// Test File Path
@@ -72,4 +73,38 @@ func FailScenarioPreview(each TestProcessConfigType, rowWidth int) {
 	// fmt.Println(each.Parameters.RandomTotalCount)
 	// B Plus Tree Width
 	// fmt.Println(each.Parameters.BpWidth[0])
+
+	// Define fixed widths for the table's fields and values to ensure proper alignment.
+	fieldWidth := 20
+	if rowWidth < 32 {
+		rowWidth = 32 // The valueWidth should be at least 30 because the date and time are included.
+	}
+	totalWidth := fieldWidth + rowWidth + 7
+
+	// Create a border for the table using a repeated pattern for visual clarity.
+	border := BrightYellow + strings.Repeat("=", totalWidth) + Reset
+	divider := BrightYellow + strings.Repeat("-", totalWidth) + Reset
+
+	// Print the report title centered within the table, using padding to adjust its position.
+	title := "Failure Scenario Preview"
+	titleWidth := len(title)
+	padding := (totalWidth - titleWidth) / 2
+	fmt.Println(BrightMagenta + border + Reset)
+	fmt.Printf("%s|%s%s%s|%s\n", BrightMagenta, strings.Repeat(" ", padding), title, strings.Repeat(" ", padding-1), Reset)
+	fmt.Println(BrightMagenta + border + Reset)
+
+	// Print the table header, highlighting the column titles for "Field" and "Value".
+	fmt.Printf("%s| %-*s | %-*s |%s\n", BrightRed, fieldWidth, "Field", rowWidth, "Value", Reset)
+	fmt.Println(BrightRed + divider + Reset)
+
+	// Print each row of the table with the task's details, formatted to align fields and values.
+	fmt.Printf("%s| %-*s | %-*s |%s\n", DarkYellow, fieldWidth, "Record File", rowWidth, each.Record.ManualRecordFile, Reset) // %-*s ensures left alignment.
+	fmt.Printf("%s| %-*s | %-*s |%s\n", DarkYellow, fieldWidth, "Record Path", rowWidth, each.Record.TestRecordPath, Reset)
+	fmt.Printf("%s| %-*s | %-*s |%s\n", DarkYellow, fieldWidth, "Start Time", rowWidth, time.Now().Format(time.RFC1123), Reset)
+	fmt.Printf("%s| %-*s | %-*d |%s\n", DarkYellow, fieldWidth, "Total Tasks", rowWidth, each.Parameters.RandomTotalCount, Reset)
+
+	// Print a closing border to signal the end of the report.
+	fmt.Println(BrightMagenta + border + Reset)
+
+	// return nil
 }
