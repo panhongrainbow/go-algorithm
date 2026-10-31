@@ -26,14 +26,12 @@ func Test_Check_Manual_Accuracies(t *testing.T) {
 		)
 
 		// Verify that the record file exists.
-		if _, err := recordDir.CheckFile(each.Record.ManualRecordFile); err != nil {
-			require.NoError(t, err)
-		}
+		_, err := recordDir.CheckFile(each.Record.ManualRecordFile)
+		require.NoError(t, err)
 
 		// Print the recorded failure scenario before reproducing the error.
-		utilhub.FailScenarioPreview(each, len(each.Record.TestRecordPath))
-
-		return
+		err = utilhub.FailScenarioPreview(each, len(each.Record.TestRecordPath))
+		require.NoError(t, err)
 
 		// The following tests cover different aspects of B Plus tree correctness and stability:
 		switch {
