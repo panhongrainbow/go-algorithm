@@ -8,10 +8,26 @@ package utilhub
 // Adjust2Even ⛏️ returns the specified length if it is even, or a slice of length+1 if it is odd.
 // If the input length is negative, the function recursively calls itself with the absolute value of the length.
 /*
-When the test scenario requires data to be paired, grouped in twos, or evenly distributed,
-the test data should typically consist of an even number of records.
-當測試资料必须成对、两两分组或平均分配时使用
+	When the test scenario requires data to be paired, grouped in twos, or evenly distributed,
+	the test data should typically consist of an even number of records.
+	(當測試资料必须成对、两两分组或平均分配时使用)
 */
+
+/*
+Adjust2Even — Examples
+
+| Input | Expected Output | Description                              |
+|------:|----------------:|------------------------------------------|
+|     0 |               0 | Zero is already even                     |
+|     2 |               2 | Positive even number                     |
+|     4 |               4 | Positive even number                     |
+|     5 |               6 | Positive odd number, increment by 1      |
+|    -2 |              -2 | Negative even number                     |
+|    -4 |              -4 | Negative even number                     |
+|    -5 |              -6 | Negative odd number, decrement by 1      |
+|    -7 |              -8 | Negative odd number, decrement by 1      |
+*/
+
 func Adjust2Even(length int64) int64 {
 	// Check if the input length is a negative integer.
 	if length < 0 {

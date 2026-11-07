@@ -35,10 +35,9 @@ func Test_AnsiColorOutput(t *testing.T) {
 		{"BrightWhite", BrightWhite}, // Actually, this represents Bright White.
 	}
 
-	// Print instructions for manual inspection.
+	// Print messages for manual inspection.
 	fmt.Println("Manual Inspection Required:")
 	fmt.Println("请进行人工检查:")
-	fmt.Println("請進行人工檢查:")
 
 	// Print colors in a table format for manual inspection.
 	fmt.Println("Color Code Table:")

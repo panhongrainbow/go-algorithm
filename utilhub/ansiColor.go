@@ -2,15 +2,15 @@ package utilhub
 
 // =====================================================================================================================
 //                  🛠️ ANSI Color (Tool)
-// ANSI color codes for foreground (text color) and background (background color).
+// ANSI color codes for foreground text color and background color.
 // =====================================================================================================================
 
-// ANSI color codes for foreground (text color).
+// ANSI color codes for foreground text color.
 const (
-	// Reset ⛏️ all attributes (color, formatting, etc.)
+	// Reset ⛏️ all attributes, including colors, formatting, etc.
 	Reset = "\033[00m"
 
-	// DarkBlack ... ⛏️ : Dark colors (normal intensity).
+	// DarkBlack ⛏️ : Dark colors with normal intensity.
 	DarkBlack   = "\033[30m" // Black
 	DarkRed     = "\033[31m" // Red
 	DarkGreen   = "\033[32m" // Green
@@ -20,7 +20,7 @@ const (
 	DarkCyan    = "\033[36m" // Cyan
 	DarkWhite   = "\033[37m" // White (actually gray)
 
-	// BrightBlack ... ⛏️ : Bright colors (high intensity).
+	// BrightBlack ⛏️ : Bright colors with high intensity.
 	BrightBlack   = "\033[90m" // Bright Black (Gray)
 	BrightRed     = "\033[91m" // Bright Red
 	BrightGreen   = "\033[92m" // Bright Green
